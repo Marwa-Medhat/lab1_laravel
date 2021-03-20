@@ -15,9 +15,9 @@ class PostController extends Controller
         ];
 
         return view('posts.index', [
-            'posts' => $allPosts
+            'posts' => $allPosts,
         ]);
-    }
+    }  
 
     public function show($postId)
     {
@@ -48,8 +48,8 @@ class PostController extends Controller
         return view('posts.edit', [
             'post' => $post,
         ]);
-
     }
+
     public function update()
     {
         //logic to insert request data into db

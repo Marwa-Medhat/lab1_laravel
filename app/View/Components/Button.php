@@ -11,9 +11,16 @@ class Button extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $type;
+    public $href ;
+    public $text;
+
+    public function __construct($type,$href,$text)
     {
-        //
+     
+        $this->type = $type;
+        $this->href = $href;
+        $this->text = $text;
     }
 
     /**

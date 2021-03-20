@@ -23,13 +23,13 @@
         <td>{{ $post['posted_by'] }}</td>
         <td>{{ $post['created_at'] }}</td>
         <td>
-          <a href="{{ route('posts.show',['post' => $post['id']]) }}" class="btn btn-info" style="margin-bottom: 20px;">View</a>
-          <!-- convert button to href to posts.edit -->
-          <a href="{{ route('posts.edit',['post' => $post['id']]) }}" class="btn btn-secondary" style="margin-bottom: 20px;">Edit</a>
-          <button type="button" class="btn btn-danger" style="margin-bottom: 20px;">Delete</button>
+          <x-button type=info : href="{{ route('posts.show',['post' => $post['id']])}}" : text="View"/>
+          <x-button type=secondary : href="{{ route('posts.edit',['post' => $post['id']])}}" : text="Edit"/>
+          <x-button type=danger : href="#" : text="Delete"/> 
         </td>
       </tr>
     @endforeach
     </tbody>
 </table>
 @endsection
+
