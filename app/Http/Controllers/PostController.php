@@ -61,32 +61,24 @@ class PostController extends Controller
     public function edit($postId)
     {
         //logic to insert request data into db
-        // ['users' => User::all()]
+       
         $post = Post :: find ($postId);
 
         return view('posts.edit', [
-            'post' => $post,
+            'post' => $post, 'users' => User::all()
         ]);
     }
 
     public function update(Request $request)
     {
         //logic to insert request data into db
-        // $post = new Post;
-        // $user=new User;
-        // $post->title = $request->title;
-        // $post->description = $request->description;
-        // $post->save();
-        // return redirect()->route('posts.index');
+        $post = new Post;
+        $user=new User;
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->user_id=$request->user_id;
+        $post->save();
+        return redirect()->route('posts.index');
 
-
-
-
-        $post = Post::find($postID);
- $post->title = $request->title;
- $post->description=$request->description;
- $post->user_id=$request->user_id;
- $post->save();
- return redirect()->route('posts.index');
     }
 }
