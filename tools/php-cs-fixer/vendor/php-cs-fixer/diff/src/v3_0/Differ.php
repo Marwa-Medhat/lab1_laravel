@@ -19,9 +19,13 @@ use PhpCsFixer\Diff\v3_0\Output\UnifiedDiffOutputBuilder;
 final class Differ
 {
     const OLD                     = 0;
+
     const ADDED                   = 1;
+
     const REMOVED                 = 2;
+
     const DIFF_LINE_END_WARNING   = 3;
+
     const NO_LINE_END_EOF_WARNING = 4;
 
     /**

@@ -13,7 +13,9 @@ namespace PhpCsFixer\Diff\v2_0;
 final class Line
 {
     const ADDED     = 1;
+
     const REMOVED   = 2;
+
     const UNCHANGED = 3;
 
     /**

@@ -29,15 +29,15 @@ class MemoryEfficientImplementation implements LongestCommonSubsequence
         $cTo   = \count($to);
 
         if ($cFrom === 0) {
-            return array();
+            return [];
         }
 
         if ($cFrom === 1) {
             if (\in_array($from[0], $to, true)) {
-                return array($from[0]);
+                return [$from[0]];
             }
 
-            return array();
+            return [];
         }
 
         $i         = (int) ($cFrom / 2);

@@ -185,13 +185,11 @@ final class UnifiedDiffOutputBuilder implements DiffOutputBuilderInterface
                 if ($sameCount === $cutOff) {
                     $contextStartOffset = $hunkCapture - $this->contextLines < 0
                         ? $hunkCapture
-                        : $this->contextLines
-                    ;
+                        : $this->contextLines;
 
                     $contextEndOffset = $i + $this->contextLines >= \count($diff)
                         ? \count($diff) - $i
-                        : $this->contextLines
-                    ;
+                        : $this->contextLines;
 
                     $this->writeHunk(
                         $diff,
@@ -238,8 +236,7 @@ final class UnifiedDiffOutputBuilder implements DiffOutputBuilderInterface
         if (false !== $hunkCapture) {
             $contextStartOffset = $hunkCapture - $this->contextLines < 0
                 ? $hunkCapture
-                : $this->contextLines
-            ;
+                : $this->contextLines;
 
             $this->writeHunk(
                 $diff,

@@ -25,7 +25,7 @@ class TimeEfficientImplementation implements LongestCommonSubsequence
      */
     public function calculate(array $from, array $to)
     {
-        $common     = array();
+        $common     = [];
         $fromLength = \count($from);
         $toLength   = \count($to);
         $width      = $fromLength + 1;

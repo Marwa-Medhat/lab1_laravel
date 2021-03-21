@@ -73,8 +73,7 @@ final class UnifiedDiffOutputBuilder extends AbstractChunkOutputBuilder
 
         return 0 !== \strlen($diff) && "\n" !== $last && "\r" !== $last
             ? $diff . "\n"
-            : $diff
-        ;
+            : $diff;
     }
 
     private function writeDiffHunks($output, array $diff)
@@ -130,8 +129,7 @@ final class UnifiedDiffOutputBuilder extends AbstractChunkOutputBuilder
                 if ($sameCount === $cutOff) {
                     $contextStartOffset = ($hunkCapture - $this->contextLines) < 0
                         ? $hunkCapture
-                        : $this->contextLines
-                    ;
+                        : $this->contextLines;
 
                     // note: $contextEndOffset = $this->contextLines;
                     //
@@ -193,8 +191,7 @@ final class UnifiedDiffOutputBuilder extends AbstractChunkOutputBuilder
 
         $contextStartOffset = $hunkCapture - $this->contextLines < 0
             ? $hunkCapture
-            : $this->contextLines
-        ;
+            : $this->contextLines;
 
         // prevent trying to write out more common lines than there are in the diff _and_
         // do not write more than configured through the context lines

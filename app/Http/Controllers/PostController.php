@@ -3,57 +3,90 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $allPosts = [
-            ['id' => 1, 'title' => 'laravel', 'posted_by' => 'Ahmed', 'created_at' => '2021-03-20','email'=>'Ahmed@gmail.com'],
-            ['id' => 2, 'title' => 'PHP', 'posted_by' => 'Mohamed', 'created_at' => '2021-04-15','email'=>'Mohamed@gmail.com'],
-            ['id' => 3, 'title' => 'Javascript', 'posted_by' => 'Ali', 'created_at' => '2021-06-01','email'=>'Ali@gmail.com'],
-        ];
+        $allPosts = Post :: all();
+        // dd($allPosts);
 
         return view('posts.index', [
             'posts' => $allPosts,
         ]);
-    }  
-
+   
+        }
     public function show($postId)
     {
-        $post = ['id' => 1, 'title' => 'laravel', 'description' => 'laravel is awsome framework', 'posted_by' => 'Ahmed', 'created_at' => '2021-03-20','email'=>'Ahmed@gmail.com'];
+        $post = Post :: find ($postId);
 
         return view('posts.show', [
             'post' => $post,
         ]);
     }
 
+    // public function create()
+    // {
+    //     return view('posts.create');
+    // }
     public function create()
     {
-        return view('posts.create');
+    return view('posts.create', ['users' => User::all()]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        //logic to insert request data into db
+        // $post = new Post;
+        // $user=new User;
+        // $post->title = $request->title;
+        // $post->description = $request->description;
+        // $post->save();
+        // return redirect()->route('posts.index');
 
+
+        $post = new Post;
+        $user=new User;
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->user_id=$request->user_id;
+        // $post->posted_by=$request->user_id;
+        $post->save();
         return redirect()->route('posts.index');
     }
 
-    public function edit()
+  
+
+    public function edit($postId)
     {
         //logic to insert request data into db
-        $post = ['id' => 1, 'title' => 'laravel', 'description' => 'laravel is awsome framework', 'posted_by' => 'Ahmed', 'created_at' => '2021-03-20'];
+        // ['users' => User::all()]
+        $post = Post :: find ($postId);
 
         return view('posts.edit', [
             'post' => $post,
         ]);
     }
 
-    public function update()
+    public function update(Request $request)
     {
         //logic to insert request data into db
+        // $post = new Post;
+        // $user=new User;
+        // $post->title = $request->title;
+        // $post->description = $request->description;
+        // $post->save();
+        // return redirect()->route('posts.index');
 
-        return redirect()->route('posts.index');
+
+
+
+        $post = Post::find($postID);
+ $post->title = $request->title;
+ $post->description=$request->description;
+ $post->user_id=$request->user_id;
+ $post->save();
+ return redirect()->route('posts.index');
     }
 }
