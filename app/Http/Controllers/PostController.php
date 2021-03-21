@@ -23,6 +23,7 @@ class PostController extends Controller
         // return view('posts.index', [
         //      'posts' => DB::table('posts')->paginate(15)
         // ]);
+        // dd($Posts);
            return view('posts.index', [
             'posts' => $Posts,
         ]);

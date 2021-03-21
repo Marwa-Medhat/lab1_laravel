@@ -26,7 +26,7 @@
         <!-- <x-button type=danger : href="{{ route('posts.destory',['post' => $post['id']])}}" : text="Delete" /> -->
         <form method="POST" action="{{ route('posts.destory',['post' => $post['id']])}}" style="display:inline;margin:0px;padding:0px">
           @csrf @method('DELETE')
-          <button class="btn btn-danger" style="margin-buttom:20px;" onclick="return confirm('Are you sure you want to delete ?')">Delete</button>
+          <button class="btn btn-danger" style="margin-bottom:20px;" onclick="return confirm('Are you sure you want to delete ?')">Delete</button>
         </form>
 
         <!-- {{$posts->links("pagination::bootstrap-4")}} -->
