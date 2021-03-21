@@ -24,6 +24,9 @@
         <x-button type=info : href="{{ route('posts.show',['post' => $post['id']])}}" : text="View" />
         <x-button type=secondary : href="{{ route('posts.edit',['post' => $post['id']])}}" : text="Edit" />
         <!-- <x-button type=danger : href="{{ route('posts.destory',['post' => $post['id']])}}" : text="Delete" /> -->
+
+        <button type="button" class="btn btn-success show-ajax" data-toggle="modal" data-target="#ajax_view" data-ajax="{{$post->id}}">AJView</button>
+
         <form method="POST" action="{{ route('posts.destory',['post' => $post['id']])}}" style="display:inline;margin:0px;padding:0px">
           @csrf @method('DELETE')
           <button class="btn btn-danger" style="margin-bottom:20px;" onclick="return confirm('Are you sure you want to delete ?')">Delete</button>
@@ -57,4 +60,22 @@
     </ul>
   </nav> -->
 </table>
-{{$posts->links("pagination::bootstrap-4")}} @endsection
+{{$posts->links("pagination::bootstrap-4")}}
+
+<div id="ajax_view" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">view post</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+      <div class="modal-body" id="ajax_view_content">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+@endsection

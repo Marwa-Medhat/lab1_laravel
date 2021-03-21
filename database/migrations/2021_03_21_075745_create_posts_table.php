@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             // $table->timestamps();
             \Carbon\Carbon::parse($table->timestamps(), 'd/m/Y H:i:s')->isoFormat('ddd Do \of MMMM YYYY, h:mm:ss a');
         //    dd(Carbon::createFromFormat('Y-m-d H:i:s', $table->timestamps())->format('d-m-Y'));
+            $table->softDeletes();
         });
     }
 

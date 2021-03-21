@@ -117,4 +117,11 @@ class PostController extends Controller
         return redirect()->route('posts.index');
 
     }
+
+
+    public function ajaxShow(Request $request)
+    {
+        $post = Post::withTrashed()->where("id", $request->post)->first();
+        return view('posts.ajax_show', compact('post'));
+    }
 }

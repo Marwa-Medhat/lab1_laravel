@@ -35,3 +35,6 @@ Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.e
 
 //Update
 Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
+
+
+Route::get('/posts/ajax/show', [PostController::class, 'ajaxShow'])->name('posts.ajax.show');
