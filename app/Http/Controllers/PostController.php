@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 
 class PostController extends Controller
 {
@@ -13,14 +15,17 @@ class PostController extends Controller
         $allPosts = Post :: all();
         // dd($allPosts);
 
-
+        $Posts = Post ::paginate(4);
         // return view('posts.index', [
         //      'posts' => DB::table('posts')->paginate(15)
         // ]);
-
-        return view('posts.index', [
-            'posts' => $allPosts,
+           return view('posts.index', [
+            'posts' => $Posts,
         ]);
+
+        // return view('posts.index', [
+        //     'posts' => $allPosts,
+        // ]);
    
         }
     public function show($postId)

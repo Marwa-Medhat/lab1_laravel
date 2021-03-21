@@ -24,6 +24,7 @@ Route::get('/test', function () {
 
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::delete('/posts/{post}', [PostController::class, 'destory'])->name('posts.destory');
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 //show 3shan twreni post post
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
@@ -34,6 +35,3 @@ Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.e
 
 //Update
 Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
-
-
-Route::delete('/posts/{post}', [PostController::class, 'destory'])->name('posts.destory');
