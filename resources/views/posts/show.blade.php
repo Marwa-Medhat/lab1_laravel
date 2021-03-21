@@ -20,10 +20,10 @@
   </div>
   <div class="card-body">
     <span class="card-title font-weight-bold h5 inline">Name:</span>
-    <span class="card-text">{{ $post['posted_by'] }}</span>
+    <span class="card-text">{{$post->user->name}}</span>
     <br>
     <span class="card-title font-weight-bold h5 inline">Email:</span>
-    <span class="card-text">{{ $post['email'] }}</span>
+    <span class="card-text">{{ $post->user->email}}</span>
     <br>
     <span class="card-title font-weight-bold h5 inline">Created At:</span>
     <span class="card-text">{{Carbon\Carbon::parse($post->created_at)->Format('Do d \of M Y, h:m:s a')}}</span>

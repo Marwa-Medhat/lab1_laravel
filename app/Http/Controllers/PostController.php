@@ -37,7 +37,7 @@ class PostController extends Controller
         $post = Post :: find ($postId);
 
         return view('posts.show', [
-            'post' => $post,
+            'post' => $post,'users' => User::all()
         ]);
     }
 
