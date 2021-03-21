@@ -108,12 +108,12 @@ class PostController extends Controller
 
 
 
-    public function destory()
+    public function destory($postId)
     {
 
         // ------------------------------------------
-        return view('posts.destory',[
-            'posts' => $allPosts,
-        ]) ;
+        Post::find($postId)->delete();
+        return redirect()->route('posts.index');
+
     }
 }
