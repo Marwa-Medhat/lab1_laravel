@@ -13,6 +13,11 @@ class PostController extends Controller
         $allPosts = Post :: all();
         // dd($allPosts);
 
+
+        // return view('posts.index', [
+        //      'posts' => DB::table('posts')->paginate(15)
+        // ]);
+
         return view('posts.index', [
             'posts' => $allPosts,
         ]);
@@ -69,16 +74,35 @@ class PostController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request,$postId)
     {
         //logic to insert request data into db
-        $post = new Post;
-        $user=new User;
+        // $post = new Post;
+        // $user=new User;
+        // $post->title = $request->title;
+        // $post->description = $request->description;
+        // $post->user_id=$request->user_id;
+        // $post->save();
+        // return redirect()->route('posts.index');
+
+        // dd($postId);
+        $post = Post::find($postId);
         $post->title = $request->title;
-        $post->description = $request->description;
+        $post->description=$request->description;
         $post->user_id=$request->user_id;
         $post->save();
-        return redirect()->route('posts.index');
+       return redirect()->route('posts.index');
 
+    }
+
+
+
+    public function destory()
+    {
+
+        // ------------------------------------------
+        return view('posts.destory',[
+            'posts' => $allPosts,
+        ]) ;
     }
 }

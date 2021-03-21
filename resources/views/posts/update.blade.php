@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('title')Update page Page @endsection @section('content')
+<!-- @extends('layouts.app') @section('title')Update page Page @endsection @section('content')
 <form method="POST" action="{{route('posts.store')}}">
   @csrf
   <div class="form-group">
@@ -15,7 +15,7 @@
       <option value="{{$user->id}}"></option>
     </select>
   </div>
-  <button type="submit" class="btn btn-success">Update Post</button>
+  <a type="submit" href="{{ route('posts.update',['post' => $post['id']])}}" class="btn btn-success">Update Post</a>
 </form>
 
-@endsection
+@endsection -->

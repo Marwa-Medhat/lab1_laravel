@@ -22,7 +22,7 @@
       <td>
         <x-button type=info : href="{{ route('posts.show',['post' => $post['id']])}}" : text="View" />
         <x-button type=secondary : href="{{ route('posts.edit',['post' => $post['id']])}}" : text="Edit" />
-        <x-button type=danger : href="#" : text="Delete" />
+        <x-button type=danger : href="{{ route('posts.destory',['post' => $post['id']])}}" : text="Delete" />
       </td>
     </tr>
     @endforeach

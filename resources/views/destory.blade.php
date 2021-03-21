@@ -1,0 +1,1 @@
+<a href="#" class="delete" data-confirm="Are you sure to delete this item?">Delete</a>
