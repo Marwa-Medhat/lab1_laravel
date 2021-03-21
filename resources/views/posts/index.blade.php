@@ -18,7 +18,8 @@
       <td>{{ $post['title'] }}</td>
       <td>{{ $post->user ? $post->user->name : 'user not found' }}</td>
       <!-- <td>{{ $post['posted_by'] }}</td> -->
-      <td>{{ $post['created_at'] }}</td>
+      <!-- <td>{{ $post['created_at'] }}</td> -->
+      <td> {{Carbon\Carbon::parse($post->created_at)->Format('Y-m-d')}} </td>
       <td>
         <x-button type=info : href="{{ route('posts.show',['post' => $post['id']])}}" : text="View" />
         <x-button type=secondary : href="{{ route('posts.edit',['post' => $post['id']])}}" : text="Edit" />
