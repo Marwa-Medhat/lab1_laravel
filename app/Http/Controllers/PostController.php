@@ -6,16 +6,20 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 
 class PostController extends Controller
 {
     public function index()
     {
+
+        // dd( Carbon::now()->format('Y-m-d H:i:s'));
         $allPosts = Post :: all();
         // dd($allPosts);
 
         $Posts = Post ::paginate(4);
+        // dd($posts);
         // return view('posts.index', [
         //      'posts' => DB::table('posts')->paginate(15)
         // ]);
@@ -62,6 +66,8 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->user_id=$request->user_id;
         // $post->posted_by=$request->user_id;
+    //    dd( \Carbon\Carbon::parse($post->posted_by, 'd/m/Y H:i:s')->isoFormat('ddd Do \of MMMM YYYY, h:mm:ss a'));
+
         $post->save();
         return redirect()->route('posts.index');
     }

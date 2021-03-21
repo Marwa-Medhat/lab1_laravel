@@ -23,9 +23,34 @@
         <x-button type=info : href="{{ route('posts.show',['post' => $post['id']])}}" : text="View" />
         <x-button type=secondary : href="{{ route('posts.edit',['post' => $post['id']])}}" : text="Edit" />
         <x-button type=danger : href="{{ route('posts.destory',['post' => $post['id']])}}" : text="Delete" />
+
+
+        <!-- {{$posts->links("pagination::bootstrap-4")}} -->
+
       </td>
     </tr>
     @endforeach
   </tbody>
+
+
+  <!-- <nav aria-label="Page navigation example">
+    <ul class="pagination"  >
+      <li class="page-item">
+        <a class="page-link">Previous</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="{{ route('posts.index',['post' => $post['id']])}}">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="{{ route('posts.index',['post' => $post['id']])}}">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="{{ route('posts.index',['post' => $post['id']])}}">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="{{ route('posts.index',['post' => $post['id']])}}">Next</a>
+      </li>
+    </ul>
+  </nav> -->
 </table>
-@endsection
+{{$posts->links("pagination::bootstrap-4")}} @endsection

@@ -20,8 +20,8 @@ class CreatePostsTable extends Migration
             $table->string('title',100);
             $table->text('description');
             // $table->timestamps();
-            // \Carbon\Carbon::parse($date, 'd/m/Y H:i:s')->isoFormat('ddd Do \of MMMM YYYY, h:mm:ss a');
-           dd(Carbon::createFromFormat('Y-m-d H:i:s', $table->timestamps())->format('d-m-Y')) ;
+            \Carbon\Carbon::parse($table->timestamps(), 'd/m/Y H:i:s')->isoFormat('ddd Do \of MMMM YYYY, h:mm:ss a');
+        //    dd(Carbon::createFromFormat('Y-m-d H:i:s', $table->timestamps())->format('d-m-Y'));
         });
     }
 
