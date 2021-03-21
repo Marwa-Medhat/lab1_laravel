@@ -67,7 +67,7 @@ class PostController extends Controller
         $post->user_id=$request->user_id;
         // $post->posted_by=$request->user_id;
     //    dd( \Carbon\Carbon::parse($post->posted_by, 'd/m/Y H:i:s')->isoFormat('ddd Do \of MMMM YYYY, h:mm:ss a'));
-
+    // dd( Carbon::createFromFormat('Y-m-d H:i:s', $post->created_by)->format('d-m-Y'));
         $post->save();
         return redirect()->route('posts.index');
     }
