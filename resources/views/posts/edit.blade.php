@@ -1,4 +1,24 @@
 @extends('layouts.app') @section('title')Update Page @endsection @section('content')
+<!-- @if ($errors->any())
+<div class="alert alert-danger">
+  <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+  </ul>
+</div>
+@endif -->
+
+@if ($errors->any())
+<div class="alert alert-danger">
+  <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+  </ul>
+</div>
+@endif
+
 <form method="POST" action="{{ route('posts.update',['post' => $post['id']])}}">
   <input type="hidden" name="_method" value="put" /> @csrf
   <div class="form-group">

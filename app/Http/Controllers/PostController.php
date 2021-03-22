@@ -8,6 +8,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
+
+use Validator;
 
 class PostController extends Controller
 {
@@ -94,8 +97,8 @@ class PostController extends Controller
             'post' => $post, 'users' => User::all()
         ]);
     }
-
-    public function update(Request $request,$postId)
+    // UpdatePostRequest
+    public function update(UpdatePostRequest $request,$postId)
     {
         //logic to insert request data into db
         // $post = new Post;
@@ -107,6 +110,7 @@ class PostController extends Controller
         // return redirect()->route('posts.index');
 
         // dd($postId);
+        
         $post = Post::find($postId);
         $post->title = $request->title;
         $post->description=$request->description;
