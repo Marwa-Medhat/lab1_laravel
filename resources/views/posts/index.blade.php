@@ -8,7 +8,10 @@
       <th scope="col">Title</th>
       <th scope="col">Posted By</th>
       <th scope="col">Created At</th>
+      <th scope="col">slug</th>
+
       <th scope="col">Actions</th>
+
     </tr>
   </thead>
   <tbody>
@@ -20,6 +23,8 @@
       <!-- <td>{{ $post['posted_by'] }}</td> -->
       <!-- <td>{{ $post['created_at'] }}</td> -->
       <td> {{Carbon\Carbon::parse($post->created_at)->Format('Y-m-d')}} </td>
+      <td> {{ $post['slug'] }} </td>
+
       <td>
         <x-button type=info : href="{{ route('posts.show',['post' => $post['id']])}}" : text="View" />
         <x-button type=secondary : href="{{ route('posts.edit',['post' => $post['id']])}}" : text="Edit" />
