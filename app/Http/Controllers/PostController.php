@@ -13,7 +13,6 @@ class PostController extends Controller
 {
     public function index()
     {
-
         // dd( Carbon::now()->format('Y-m-d H:i:s'));
         $allPosts = Post :: all();
         // dd($allPosts);
@@ -32,7 +31,7 @@ class PostController extends Controller
         //     'posts' => $allPosts,
         // ]);
    
-        }
+    }
     public function show($postId)
     {
         $post = Post :: find ($postId);

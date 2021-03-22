@@ -38,3 +38,6 @@ Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.upda
 
 
 Route::get('/posts/ajax/show', [PostController::class, 'ajaxShow'])->name('posts.ajax.show');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

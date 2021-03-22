@@ -29,6 +29,7 @@ class PostFactory extends Factory
             'title' => Str::random(10),
             'description' => Str::random(30),
             'user_id' => 1,
+            //fn has for gerneric user in seed 
         ];
     }
 }
