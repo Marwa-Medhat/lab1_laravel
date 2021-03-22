@@ -64,18 +64,32 @@
 
 <div id="ajax_view" class="modal fade" role="dialog">
   <div class="modal-dialog">
-    <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">view post</h4>
-        <button type="button" class="close" data-dismiss="modal">×</button>
+        <button type="button" class="close" data-dismiss="modal">x</button>
       </div>
-      <div class="modal-body" id="ajax_view_content">
-
-      </div>
+      <div class="modal-body" id="ajax_view_content"></div>
     </div>
   </div>
 </div>
-
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function() {
+    $('.show-ajax').click(function() {
+      console.log($(this).data('ajax'));
+      $.ajax({
+        url: "{{url('/posts/ajax/show')}}",
+        type: 'get',
+        data: {
+          post: $(this).data('ajax')
+        },
+        success: function(data) {
+          $('#ajax_view_content').html(data);
+        }
+      });
+    });
+  });
+</script>
 @endsection

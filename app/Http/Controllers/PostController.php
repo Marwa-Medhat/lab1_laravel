@@ -7,7 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-
+use App\Http\Requests\StorePostRequest;
 
 class PostController extends Controller
 {
@@ -51,7 +51,7 @@ class PostController extends Controller
     return view('posts.create', ['users' => User::all()]);
     }
 
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
         // $post = new Post;
         // $user=new User;
@@ -60,7 +60,17 @@ class PostController extends Controller
         // $post->save();
         // return redirect()->route('posts.index');
 
-
+        // $request->validate(
+        //     [
+        //         'title'=>['required','min:3'],
+        //         'description'=>['required','min:3'],
+            
+        //     ],
+        //     [
+        //       'title.required'=>'show this message', 
+        //       'title.min'=>'override min validation rule default message',  
+        //     ]
+        //     );
         $post = new Post;
         $user=new User;
         $post->title = $request->title;
