@@ -14,6 +14,10 @@
     <label for="title">Title</label>
     <input name='title' type="text" class="form-control" id="title" aria-describedby="emailHelp">
   </div>
+  <!-- <div class="form-group">
+    <label for="slug">slug</label>
+    <input name='slug' type="text" class="form-control" id="slug">
+  </div> -->
   <div class="form-group">
     <label for="description">Description</label>
     <textarea name='description' class="form-control" id="description"> </textarea>
@@ -29,4 +33,16 @@
   <button type="submit" class="btn btn-success">Create Post</button>
 </form>
 
+@endsection @section('scripts')
+<script>
+  $('#title').change(function(e) {
+    $.get("{{url('/posts/ajax/show')}}", {
+        'title': $(this).val()
+      },
+      function(data) {
+        $('#slug').val(data.slug);
+      }
+    );
+  });
+</script>
 @endsection

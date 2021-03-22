@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,8 @@ Route::get('/posts/ajax/show', [PostController::class, 'ajaxShow'])->name('posts
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+Route::get('posts/check_slug', 'PostsController@checkSlug')->name('posts.checkSlug');

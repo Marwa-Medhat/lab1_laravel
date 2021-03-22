@@ -110,7 +110,7 @@ class PostController extends Controller
         // return redirect()->route('posts.index');
 
         // dd($postId);
-        
+
         $post = Post::find($postId);
         $post->title = $request->title;
         $post->description=$request->description;
@@ -137,4 +137,16 @@ class PostController extends Controller
         $post = Post::withTrashed()->where("id", $request->post)->first();
         return view('posts.ajax_show', compact('post'));
     }
+
+
+    public function check_slug(Request $request)
+        {
+            // Old version: without uniqueness
+            $slug = str_slug($request->title);
+
+            // New version: to generate unique slugs
+            $slug = SlugService::createSlug(Page::class, 'slug', $request->title);
+
+            return response()->json(['slug' => $slug]);
+        }
 }

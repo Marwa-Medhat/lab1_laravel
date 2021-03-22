@@ -12,7 +12,7 @@ class Post extends Model
 {
     use HasFactory;
     // use SoftDeletes;
-    // use Sluggable;
+    use Sluggable;
     protected $fillable =
     [
         'title',
