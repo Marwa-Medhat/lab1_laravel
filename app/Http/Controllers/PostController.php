@@ -13,7 +13,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        // dd( Carbon::now()->format('Y-m-d H:i:s'));
+        //Login to make sure user is authorized
         $allPosts = Post :: all();
         // dd($allPosts);
 
