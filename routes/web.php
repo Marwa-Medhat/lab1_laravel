@@ -4,7 +4,8 @@ use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Laravel\Socialite\Facades\Socialite;
-
+use App\Models\Post;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,27 +61,67 @@ Route::get('/auth/redirect', function () {
 });
 
 Route::get('/auth/callback', function () {
-    $user = Socialite::driver('github')->user();
+    // $user = Socialite::driver('github')->user();
     // dd($user);
-    // Socialite::driver('github')->stateless()->redirect();
-    //check user exist or not and save in database
-    // $user->token
-    return redirect()->route('posts.index');
+    // // Socialite::driver('github')->stateless()->redirect();
+    // //check user exist or not and save in database
+    // // $user->token
+    // return redirect()->route('posts.index');
+
+    $user1 = Socialite::driver('github')->user();
+    // dd($user);
+    //object from al user 
+    $user=new User;
+//database coloum equal to data in object
+$user = User::where('email', $user1->email)->first();
+if ( ! $user ) {    //mloash value 
+        $user->name=$user1->name;
+        $user->password=$user1->id;
+        $user->email=$user1->email;
+        // $user->password=$user->password;
+        $user->save();
+        Auth::login($user);
+        return redirect()->route('posts.index');
+}
+//lw l2a al user 
+else{
+Auth::login($user);
+return redirect()->route('posts.index');
+
+}  
 
 });
 
 
-Route::get('/auth/redirect', function () {
+Route::get('/auth/google/redirect', function () {
     // dd('here');
     return Socialite::driver('google')->redirect();
 });
 
-Route::get('/auth/callback', function () {
-    $user = Socialite::driver('google')->user();
+Route::get('/auth/google/callback', function () {
+    $user1 = Socialite::driver('google')->user();
     // dd($user);
+    //object from al user 
+    $user=new User;
+//database coloum equal to data in object
+$user = User::where('email', $user1->email)->first();
+if ( ! $user ) {    //mloash value 
+    $user->name=$user1->name;
+        $user->password=$user1->id;
+        $user->email=$user1->email;
+        // $user->password=$user->password;
+        $user->save();
+        Auth::login($user);
+        return redirect()->route('posts.index');
+}
+//lw l2a al user 
+else{
+Auth::login($user);
+return redirect()->route('posts.index');
+
+}  
     // Socialite::driver('github')->stateless()->redirect();
     //check user exist or not and save in database
     // $user->token
-    return redirect()->route('posts.index');
 
 });
