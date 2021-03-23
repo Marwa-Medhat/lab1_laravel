@@ -54,6 +54,10 @@
                                     {{ __('Login with github') }}
                                 </a>
 
+                                <a href="#" class="btn btn-dark">
+                                    {{ __('Login with google') }}
+                                </a>
+
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>

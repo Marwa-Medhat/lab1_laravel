@@ -68,3 +68,19 @@ Route::get('/auth/callback', function () {
     return redirect()->route('posts.index');
 
 });
+
+
+Route::get('/auth/redirect', function () {
+    // dd('here');
+    return Socialite::driver('google')->redirect();
+});
+
+Route::get('/auth/callback', function () {
+    $user = Socialite::driver('google')->user();
+    // dd($user);
+    // Socialite::driver('github')->stateless()->redirect();
+    //check user exist or not and save in database
+    // $user->token
+    return redirect()->route('posts.index');
+
+});

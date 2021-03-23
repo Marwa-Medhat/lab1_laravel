@@ -33,8 +33,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/posts', [PostController::class, 'index'])->middleware('auth:sanctum');
 
 // Route::get('/posts/{post}', [PostController::class, 'show']);
-Route::get('posts/{post}',[PostController::class, 'show']);
-Route::post('posts',[PostController::class, 'store']);
+Route::get('posts/{post}',[PostController::class, 'show'])->middleware('auth:sanctum');
+Route::post('posts',[PostController::class, 'store'])->middleware('auth:sanctum');
 
 
 
