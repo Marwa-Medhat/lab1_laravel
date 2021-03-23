@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Cviebrock\EloquentSluggable\Sluggable;
+use Laravel\Sanctum\HasApiTokens;
 
 class Post extends Model
 {
     use HasFactory;
+    use HasApiTokens;
     // use SoftDeletes;
     use Sluggable;
     protected $fillable =

@@ -3,6 +3,8 @@
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Laravel\Socialite\Facades\Socialite;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +49,22 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('posts/check_slug', 'PostsController@checkSlug')->name('posts.checkSlug');
+
+
+
+
+
+Route::get('/auth/redirect', function () {
+    // dd('here');
+    return Socialite::driver('github')->redirect();
+});
+
+Route::get('/auth/callback', function () {
+    $user = Socialite::driver('github')->user();
+    // dd($user);
+    // Socialite::driver('github')->stateless()->redirect();
+    //check user exist or not and save in database
+    // $user->token
+    return redirect()->route('posts.index');
+
+});

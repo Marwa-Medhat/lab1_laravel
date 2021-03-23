@@ -25,11 +25,11 @@ class StorePostRequest extends FormRequest
     {
         return [
             //
-            'title'=>['required','min:3','unique:posts'],
-            // 'title' => 'required|unique:posts|max:255',
-            'description'=>['required','min:10'],
+            // 'title'=>['required','min:3','unique:posts'],
+            // // 'title' => 'required|unique:posts|max:255',
+            // 'description'=>['required','min:10'],
             //name of coloun and name of table
-            'user_id'   => 'required|exists:users,id',
+            // 'user_id'   => 'required|exists:users,id',
         ];
     }
 
