@@ -17,10 +17,13 @@ class PostController extends Controller
     public function index()
     {
         //Login to make sure user is authorized
-        $allPosts = Post :: all();
+        // $allPosts = Post :: all();
         // dd($allPosts);
+        //Eager Loading idea  Post with table make relation with it 
 
-        $Posts = Post ::paginate(4);
+        $Posts = Post::with('User')->paginate(4);
+
+        // $Posts = Post ::paginate(4);
         // dd($posts);
         // return view('posts.index', [
         //      'posts' => DB::table('posts')->paginate(15)
